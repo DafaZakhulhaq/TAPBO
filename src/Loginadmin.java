@@ -95,6 +95,10 @@ public class Loginadmin extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
+        
+        
+        
+        
         if(USER.getText().equals("Admin1")){
         if(PASS.getText().equals("DataBuku")){
         
