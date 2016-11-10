@@ -108,6 +108,7 @@ public class Loginadmin extends javax.swing.JFrame {
             new Karyawan().show() ;
             this.dispose();
            
+            
         }
     }   if(USER.getText().equals("Admin1")){
         if(PASS.getText().equals("Pinjam")){
