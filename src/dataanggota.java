@@ -25,7 +25,7 @@ public class dataanggota extends javax.swing.JFrame {
         Object kolom[] = {"NIS","N.SISWA","TTL","Jk","AGAMA","ALAMAT","TGL DAFTAR","BERLAKU HINGGA"};
         Tabgota = new DefaultTableModel(null,kolom);
         Tabta.setModel(Tabgota);
-        jScrollPanel.getViewport().add(Tabta,null);
+        jScrollPane1.getViewport().add(Tabta,null);
         try{
             Con = null;
             Class.forName("com.mysql.jdbc.Drover");
@@ -84,28 +84,28 @@ public class dataanggota extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
-        jTextField7 = new javax.swing.JTextField();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        Behi = new javax.swing.JTextField();
+        NIS = new javax.swing.JTextField();
+        Nama = new javax.swing.JTextField();
+        TTL = new javax.swing.JTextField();
+        Jk = new javax.swing.JTextField();
+        Kelas = new javax.swing.JTextField();
+        Agama = new javax.swing.JTextField();
+        Alamat = new javax.swing.JTextField();
+        TD = new javax.swing.JTextField();
+        Save = new javax.swing.JButton();
+        Refresh = new javax.swing.JButton();
+        Edit = new javax.swing.JButton();
+        Search = new javax.swing.JButton();
+        Del = new javax.swing.JButton();
+        Exit = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabta = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("Berlaku sampai ");
+        jLabel1.setText("Berlaku Hingga ");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(90, 300, 110, 30);
 
@@ -144,86 +144,86 @@ public class dataanggota extends javax.swing.JFrame {
         jLabel10.setText("Tgl Daftar");
         getContentPane().add(jLabel10);
         jLabel10.setBounds(90, 270, 110, 30);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(180, 300, 210, 20);
+        getContentPane().add(Behi);
+        Behi.setBounds(180, 300, 210, 20);
 
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        NIS.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                NISActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(180, 60, 210, 20);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(180, 90, 210, 20);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(180, 120, 210, 20);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(180, 150, 210, 20);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(180, 180, 210, 20);
-        getContentPane().add(jTextField7);
-        jTextField7.setBounds(180, 210, 210, 20);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(180, 240, 210, 20);
-        getContentPane().add(jTextField9);
-        jTextField9.setBounds(180, 270, 210, 20);
+        getContentPane().add(NIS);
+        NIS.setBounds(180, 60, 210, 20);
+        getContentPane().add(Nama);
+        Nama.setBounds(180, 90, 210, 20);
+        getContentPane().add(TTL);
+        TTL.setBounds(180, 120, 210, 20);
+        getContentPane().add(Jk);
+        Jk.setBounds(180, 150, 210, 20);
+        getContentPane().add(Kelas);
+        Kelas.setBounds(180, 180, 210, 20);
+        getContentPane().add(Agama);
+        Agama.setBounds(180, 210, 210, 20);
+        getContentPane().add(Alamat);
+        Alamat.setBounds(180, 240, 210, 20);
+        getContentPane().add(TD);
+        TD.setBounds(180, 270, 210, 20);
 
-        jButton1.setText("Save");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        Save.setText("Save");
+        Save.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                SaveActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(400, 190, 80, 30);
+        getContentPane().add(Save);
+        Save.setBounds(400, 130, 80, 30);
 
-        jButton2.setText("Refresh");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        Refresh.setText("Refresh");
+        Refresh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                RefreshActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(500, 70, 80, 30);
+        getContentPane().add(Refresh);
+        Refresh.setBounds(500, 70, 80, 30);
 
-        jButton3.setText("Edit");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        Edit.setText("Edit");
+        Edit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                EditActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(400, 130, 80, 30);
+        getContentPane().add(Edit);
+        Edit.setBounds(400, 190, 80, 30);
 
-        jButton4.setText("Search");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        Search.setText("Search");
+        Search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                SearchActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(400, 70, 80, 30);
+        getContentPane().add(Search);
+        Search.setBounds(400, 70, 80, 30);
 
-        jButton5.setText("Delete");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        Del.setText("Delete");
+        Del.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                DelActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(500, 130, 80, 30);
+        getContentPane().add(Del);
+        Del.setBounds(500, 130, 80, 30);
 
-        jButton6.setText("Exit");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        Exit.setText("Exit");
+        Exit.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                ExitActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(500, 190, 80, 30);
+        getContentPane().add(Exit);
+        Exit.setBounds(500, 190, 80, 30);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabta.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -231,7 +231,7 @@ public class dataanggota extends javax.swing.JFrame {
                 "NIS", "Nama", "TTL", "JK", "Kelas", "Agama", "Alamat", "TGL Daftar", "Berlaku Hingga"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabta);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(0, 370, 610, 402);
@@ -239,15 +239,15 @@ public class dataanggota extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
         // TODO add your handling code here:
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
             Statement stat = connection.createStatement();
-            String sqlnya = ("insert into databuku values ('"+Kode.getText()+"','"+Nama.getText()+"','"+Nampeng.getText()+"','"+
-                bit.getText()+"','"+tahun.getText()+"')");
+            String sqlnya = ("insert into anggota values ('"+NIS.getText()+"','"+Nama.getText()+"','"+TTL.getText()+"','"+
+                Jk.getText()+"','"+Alamat.getText()+"','"+Agama.getText()+"','"+TD.getText()+"','"+Behi.getText()+"','"+Kelas.getText()+"')");
             stat.executeUpdate(sqlnya);
             JOptionPane.showMessageDialog(null, "Data Tersimpan");
             LoadData();
@@ -256,62 +256,74 @@ public class dataanggota extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Koneksi Gagal");
         }
 
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_SaveActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void RefreshActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RefreshActionPerformed
         // TODO add your handling code here:
-        Kode.setText(null);
+        NIS.setText(null);
         Nama.setText(null);
-        Nampeng.setText(null);
-        bit.setText(null);
-        tahun.setText(null);
-    }//GEN-LAST:event_jButton2ActionPerformed
+        TTL.setText(null);
+        Jk.setText(null);
+        Alamat.setText(null);
+        Agama.setText(null);
+        TD.setText(null);
+        Behi.setText(null);
+        Kelas.setText(null);
+    }//GEN-LAST:event_RefreshActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void EditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditActionPerformed
         // TODO add your handling code here:
 
-        int coba = JOptionPane.showConfirmDialog(null, "Yakin Ubah Data?","Confirmation",JOptionPane.YES_NO_OPTION);
+        int coba = JOptionPane.showConfirmDialog(null, "Yakin Record?","Confirmation",JOptionPane.YES_NO_OPTION);
         try{
             Class.forName("com.mysql.jdbc.Drive");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
-            String sql = "update databuku set KodeBuku=?, NamaBuku?, NamaPengarang=?, Penerbit=?, TahunTerbit=? where "+
-            "KodeBuku='"+Kode.getText()+"'";
+            String sql = "update anggota set NIS=?, NamaSiswa?, JenisKelamin=?, TempatTglLahir=?, Agama=?, TglPendaftaran=?,"
+                    + "BerlakuHingga=?, Kelas=? where NIS='"+NIS.getText()+"'";
             PreparedStatement st = connection.prepareStatement(sql);
-            if(coba == 0){
+            if(coba==0){
                 try{
-                    st.setString(1, Kode.getText());
+                    st.setString(1, NIS.getText());
                     st.setString(2, Nama.getText());
-                    st.setString(3, Nampeng.getText());
-                    st.setString(4, bit.getText());
-                    st.setString(5, tahun.getText());
+                    st.setString(3, TTL.getText());
+                    st.setString(4, Jk.getText());
+                    st.setString(5, Alamat.getText());
+                    st.setString(6, Agama.getText());
+                    st.setString(7, TD.getText());
+                    st.setString(8, Behi.getText());
+                    st.setString(9, Kelas.getText());
                     JOptionPane.showMessageDialog(null, "Update Data Sukses");
                     LoadData();
                 }catch(Exception e){
-                    JOptionPane.showMessageDialog(null, "Update Data Gagal"+e);
+                    JOptionPane.showMessageDialog(null, "Update Data Gagal");
                 }
             }
         }catch(Exception e){}
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_EditActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void SearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchActionPerformed
         // TODO add your handling code here:
-        String x = JOptionPane.showInputDialog(null, "Masukkan Kode Buku !!!");
+        String x = JOptionPane.showInputDialog(null, "Masukkan NIS !!!");
 
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
             Statement stat = connection.createStatement();
-            String cari = "SELECT * FROM databuku WHERE KodeBuku='"+x+"'";
+            String cari = "SELECT * FROM anggota WHERE NIS='"+x+"'";
             ResultSet rsnya = stat.executeQuery(cari);
             if(rsnya.next()){
                 System.out.print(rsnya.getString(1));
                 JOptionPane.showMessageDialog(null, "Data ditemukan");
                 LoadData();
-                Kode.setText(rsnya.getString(1));
+                NIS.setText(rsnya.getString(1));
                 Nama.setText(rsnya.getString(2));
-                Nampeng.setText(rsnya.getString(3));
-                bit.setText(rsnya.getString(4));
-                tahun.setText(rsnya.getString(5));
+                TTL.setText(rsnya.getString(3));
+                Jk.setText(rsnya.getString(4));
+                Alamat.setText(rsnya.getString(5));
+                Agama.setText(rsnya.getString(6));
+                TD.setText(rsnya.getString(7));
+                Behi.setText(rsnya.getString(8));
+                Kelas.setText(rsnya.getString(9));
             }else{
                 JOptionPane.showMessageDialog(null, "Data tidak ada");
             }
@@ -320,41 +332,46 @@ public class dataanggota extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Koneksi Gagal");
         }
 
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_SearchActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void DelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_DelActionPerformed
         // TODO add your handling code here:
 
-        String x = Kode.getText();
+        String x = NIS.getText();
         try{
             Class.forName("com.mysql.jdbc.Drive");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
             Statement stat = connection.createStatement();
-            String sql = "DELETE FROM databuku WHERE KodeBuku='"+x+"'";
+            String sql = "DELETE FROM anggota WHERE NIS='"+x+"'";
             stat.executeUpdate(sql);
-            JOPtionPane.showMessageDialog(null, "Data Telah Dihapus");
+            JOptionPane.showMessageDialog(null, "Data Telah Dihapus");
             LoadData();
-            Kode.setText(null);
+            NIS.setText(null);
             Nama.setText(null);
-            Nampeng.setText(null);
-            bit.setText(null);
-            tahun.setText(null);
+            TTL.setText(null);
+            Alamat.setText(null);
+            Agama.setText(null);
+            TD.setText(null);
+            Behi.setText(null);
+            Kelas.setText(null);
+            
         }catch (Exception e){
             System.out.print(e);
             JOptionPane.showMessageDialog(null, "Koneksi Gagal");
         }
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_DelActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ExitActionPerformed
         // TODO add your handling code here:
 
         if(JOptionPane.showConfirmDialog(null, "Yakin?","Yakin", JOptionPane.YES_NO_OPTION)
             == JOptionPane.YES_OPTION){
-            new ADMIN().show();
-            this.dispose();}
-    }//GEN-LAST:event_jButton6ActionPerformed
+        this.dispose();
+         new ADMIN().show();
+        }
+    }//GEN-LAST:event_ExitActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void NISActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NISActionPerformed
         // TODO add your handling code here:
         String x = NIS.getText();
         try{
@@ -382,10 +399,11 @@ public class dataanggota extends javax.swing.JFrame {
         }catch (Exception e){
             System.out.print(e);
             JOptionPane.showMessageDialog(null, "Koneksi Gagal");
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
+    }//GEN-LAST:event_NISActionPerformed
+    }
     /**
      * @param args the command line arguments
+     * 
      */
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -410,7 +428,7 @@ public class dataanggota extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(dataanggota.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
+        
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
@@ -420,12 +438,22 @@ public class dataanggota extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JTextField Agama;
+    private javax.swing.JTextField Alamat;
+    private javax.swing.JTextField Behi;
+    private javax.swing.JButton Del;
+    private javax.swing.JButton Edit;
+    private javax.swing.JButton Exit;
+    private javax.swing.JTextField Jk;
+    private javax.swing.JTextField Kelas;
+    private javax.swing.JTextField NIS;
+    private javax.swing.JTextField Nama;
+    private javax.swing.JButton Refresh;
+    private javax.swing.JButton Save;
+    private javax.swing.JButton Search;
+    private javax.swing.JTextField TD;
+    private javax.swing.JTextField TTL;
+    private javax.swing.JTable Tabta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
@@ -437,15 +465,5 @@ public class dataanggota extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
-    private javax.swing.JTextField jTextField7;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
     // End of variables declaration//GEN-END:variables
 }

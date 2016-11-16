@@ -27,7 +27,7 @@ public class databuku extends javax.swing.JFrame {
         Object kolom[] = {"KODE BUKU","NAMA BUKU","NAMA PENGARANG","PENERBIT","TAHUN TERBIT"};
         Tabbuk = new DefaultTableModel(null,kolom);
         Tabuk.setModel(Tabbuk);
-        jScrollPanel.getViewport().add(Tabuk,null);
+        jScrollPane1.getViewport().add(Tabuk,null);
         try{
             Con = null;
             Class.forName("com.mysql.jbdc.Driver");
@@ -75,11 +75,11 @@ public class databuku extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
-        jTextField5 = new javax.swing.JTextField();
-        jTextField6 = new javax.swing.JTextField();
+        tahun = new javax.swing.JTextField();
+        Kode = new javax.swing.JTextField();
+        Nama = new javax.swing.JTextField();
+        Nampeng = new javax.swing.JTextField();
+        bit = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -87,7 +87,7 @@ public class databuku extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabuk = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -115,16 +115,16 @@ public class databuku extends javax.swing.JFrame {
         jLabel6.setText("Penertbit");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(30, 150, 60, 30);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(140, 180, 120, 30);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(140, 60, 120, 30);
-        getContentPane().add(jTextField4);
-        jTextField4.setBounds(140, 90, 120, 30);
-        getContentPane().add(jTextField5);
-        jTextField5.setBounds(140, 120, 120, 30);
-        getContentPane().add(jTextField6);
-        jTextField6.setBounds(140, 150, 120, 30);
+        getContentPane().add(tahun);
+        tahun.setBounds(140, 180, 120, 30);
+        getContentPane().add(Kode);
+        Kode.setBounds(140, 60, 120, 30);
+        getContentPane().add(Nama);
+        Nama.setBounds(140, 90, 120, 30);
+        getContentPane().add(Nampeng);
+        Nampeng.setBounds(140, 120, 120, 30);
+        getContentPane().add(bit);
+        bit.setBounds(140, 150, 120, 30);
 
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -180,7 +180,7 @@ public class databuku extends javax.swing.JFrame {
         getContentPane().add(jButton6);
         jButton6.setBounds(370, 180, 80, 30);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        Tabuk.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -191,7 +191,7 @@ public class databuku extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(Tabuk);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 240, 452, 120);
@@ -296,7 +296,7 @@ public class databuku extends javax.swing.JFrame {
             Statement stat = connection.createStatement();
             String sql = "DELETE FROM databuku WHERE KodeBuku='"+x+"'";
             stat.executeUpdate(sql);
-            JOPtionPane.showMessageDialog(null, "Data Telah Dihapus");
+            JOptionPane.showMessageDialog(null, "Data Telah Dihapus");
             LoadData();
         Kode.setText(null);
         Nama.setText(null);
@@ -345,6 +345,11 @@ public class databuku extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextField Kode;
+    private javax.swing.JTextField Nama;
+    private javax.swing.JTextField Nampeng;
+    private javax.swing.JTable Tabuk;
+    private javax.swing.JTextField bit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -358,11 +363,6 @@ public class databuku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
-    private javax.swing.JTextField jTextField5;
-    private javax.swing.JTextField jTextField6;
+    private javax.swing.JTextField tahun;
     // End of variables declaration//GEN-END:variables
 }
