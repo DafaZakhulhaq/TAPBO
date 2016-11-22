@@ -20,16 +20,16 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
-public class datapeminjam extends javax.swing.JFrame {
+public class Pinjam extends javax.swing.JFrame {
 
     private DefaultTableModel Tabpin;
     Connection Con;
     
-    private LoadData() {
-        Object kolom[] = ("NIS","N. SISWA","K. BUKU","N. BUKU", "PENERBIT", "TGL PINJAM", "TGL KEMBALI", "LAMA PINJAM");
+    private void LoadData() {
+        Object kolom[] = {"NIS","N. SISWA","K. BUKU","N. BUKU", "PENERBIT", "TGL PINJAM", "TGL KEMBALI", "LAMA PINJAM"};
         Tabpin = new DefaultTableModel(null, kolom);
-        Tapin.setModel(Tabpin);
-        jScrollPane2.getViewport().add(Tapin,null);
+        jTable4.setModel(Tabpin);
+        jScrollPane2.getViewport().add(jTable4,null);
         
         try{
             Con = null;
@@ -37,7 +37,7 @@ public class datapeminjam extends javax.swing.JFrame {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
             String sql = "" + "SELECT * from peminjam";
             Statement stat = con.createStatement();
-            RseultSet res = stat.executeQuery(sql);
+            ResultSet res = stat.executeQuery(sql);
             while(res.next()) {
                 String NIS = res.getString("NIS");
                 String NamaSiswa = res.getString("NamaSiswa");
@@ -48,18 +48,19 @@ public class datapeminjam extends javax.swing.JFrame {
                 String TglPinjam = res.getString("TglPinjam");
                 String TglKembali = res.getString("TglKembali");
                 String LamaPinjam = res.getString("LamaPinjam");
-                Object[] data = [NIS,NamaSiswa,Kelas,KodeBuku,NamaBuku,Penerbit,TglPinjam,TglKembali,LamaPinjam];
+                Object[] data = {NIS,NamaSiswa,Kelas,KodeBuku,NamaBuku,Penerbit,TglPinjam,TglKembali,LamaPinjam};
+                //Object[] data = [NIS,NamaSiswa,Kelas,KodeBuku,NamaBuku,Penerbit,TglPinjam,TglKembali,LamaPinjam];
                 Tabpin.addRow(data);
             }
-            Tapin.getColumnModel().getColumn(0).setPreferredWidth(50);
-            Tapin.getColumnModel().getColumn(1).setPreferredWidth(100);
-            Tapin.getColumnModel().getColumn(2).setPreferredWidth(100);
-            Tapin.getColumnModel().getColumn(3).setPreferredWidth(100);
-            Tapin.getColumnModel().getColumn(4).setPreferredWidth(100);
-            Tapin.getColumnModel().getColumn(5).setPreferredWidth(100);
-            Tapin.getColumnModel().getColumn(6).setPreferredWidth(80);
-            Tapin.getColumnModel().getColumn(7).setPreferredWidth(80);
-            Tapin.getColumnModel().getColumn(8).setPreferredWidth(50);
+            jTable4.getColumnModel().getColumn(0).setPreferredWidth(50);
+            jTable4.getColumnModel().getColumn(1).setPreferredWidth(100);
+            jTable4.getColumnModel().getColumn(2).setPreferredWidth(100);
+            jTable4.getColumnModel().getColumn(3).setPreferredWidth(100);
+            jTable4.getColumnModel().getColumn(4).setPreferredWidth(100);
+            jTable4.getColumnModel().getColumn(5).setPreferredWidth(100);
+            jTable4.getColumnModel().getColumn(6).setPreferredWidth(80);
+            jTable4.getColumnModel().getColumn(7).setPreferredWidth(80);
+            jTable4.getColumnModel().getColumn(8).setPreferredWidth(50);
         }
         catch(Exception e) {
             JOptionPane.showMessageDialog(null,""+e);
@@ -69,7 +70,7 @@ public class datapeminjam extends javax.swing.JFrame {
     /**
      * Creates new form datapeminjam
      */
-    public datapeminjam() {
+    public Pinjam() {
         initComponents();
     }
 
@@ -109,12 +110,12 @@ public class datapeminjam extends javax.swing.JFrame {
         Lampin = new javax.swing.JTextField();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -295,15 +296,6 @@ public class datapeminjam extends javax.swing.JFrame {
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(10, 430, 600, 120);
 
-        jButton1.setText("Exit");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(530, 210, 80, 50);
-
         jButton2.setText("Search");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -312,15 +304,6 @@ public class datapeminjam extends javax.swing.JFrame {
         });
         getContentPane().add(jButton2);
         jButton2.setBounds(410, 70, 80, 50);
-
-        jButton3.setText("Refresh");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton3);
-        jButton3.setBounds(530, 70, 80, 50);
 
         jButton4.setText("Edit");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
@@ -331,15 +314,6 @@ public class datapeminjam extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(410, 140, 80, 50);
 
-        jButton5.setText("Delete");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(530, 140, 80, 50);
-
         jButton6.setText("Save");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -348,6 +322,33 @@ public class datapeminjam extends javax.swing.JFrame {
         });
         getContentPane().add(jButton6);
         jButton6.setBounds(410, 210, 80, 50);
+
+        jButton7.setText("Refresh");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton7);
+        jButton7.setBounds(530, 70, 80, 50);
+
+        jButton8.setText("Delete");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton8);
+        jButton8.setBounds(520, 140, 80, 50);
+
+        jButton3.setText("Exit");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(530, 210, 80, 50);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -358,13 +359,14 @@ public class datapeminjam extends javax.swing.JFrame {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = Drivermanager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "") ;
+           // Connection connection = Drivermanager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
             Statement stat = connection.createStatement();
             String cari = "SELECT * FROM peminjam WHERE NIS='"+x+"'";
             ResultSet rsnya = stat.executeQuery(cari);
             
             if(rsnya.next()) {
-                System.out.print(rsnya.getString(i));
+                System.out.print(rsnya.getString(1));
                 JOptionPane.showMessageDialog(rootPane, "Data ditemukan");
                 LoadData();
                 KS.setText(rsnya.getString(1));
@@ -414,8 +416,8 @@ public class datapeminjam extends javax.swing.JFrame {
         // TODO add your handling code here:
         DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
         try {
-            java.utill.Date TanggalCEKIN = df.parse(TglPin.getText());
-            java.utill.Date TanggalCEKOUT = df.parse(TglKem.getText());
+            java.util.Date TanggalCEKIN = df.parse(TglPin.getText());
+            java.util.Date TanggalCEKOUT = df.parse(TglKem.getText());
             
             long Hari1 = TanggalCEKIN.getTime();
             long Hari2 = TanggalCEKOUT.getTime();
@@ -438,8 +440,8 @@ public class datapeminjam extends javax.swing.JFrame {
         
         try {
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
-            Statement stat = connection.createStatement();
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "") ;
+            Statement stat=connection.createStatement();
             String cari = "SELECT * FROM peminjam WHERE NIS = '"+x+"'";
             ResultSet rsnya = stat.executeQuery(cari);
             
@@ -461,11 +463,12 @@ public class datapeminjam extends javax.swing.JFrame {
             else {
                 JOptionPane.showMessageDialog(null, "Data tidak ada");
             }
+             }
             catch (Exception e) {
                     System.out.print(e);
                     JOptionPane.showMessageDialog(null, "Koneksi Gagal");
                     }
-        }
+        
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -473,8 +476,8 @@ public class datapeminjam extends javax.swing.JFrame {
         int coba = JOptionPane.showConfirmDialog(null, "Yakin untuk mengubah data ini?", "Confirmation", JOptionPane.YES_NO_OPTION);
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
-            Statement stat = connection.createStatement();
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "") ;
+            Statement stat=connection.createStatement();
             String sql = "update peminjam set NIS=?, NamaSiswa=?, Kelas=?, KodeBuku=?, NamaBuku=?, Penerbit=?,"+"TglPinjam=?,TglKembali=?,LamaPinjam=? where" + "NIS='" + KS.getText()+"'";
             PreparedStatement st = connection.prepareStatement(sql);
             if(coba==0) {
@@ -489,37 +492,30 @@ public class datapeminjam extends javax.swing.JFrame {
                     st.setString(8,TglKem.getText());
                     st.setString(9,Lampin.getText());
                     st.executeUpdate();
-                    JOptionPane.showMessageDialog(null, "Update Data Sukses");
                     LoadData();
                 }
-                catch(Exception e) {
-                    JOptionPane.showMessageDialog(null, "Update Data Gagal");
+                catch (Exception e){
+                    
+                    JOptionPane.showMessageDialog(null, "Update Data Sukses");
+                    
+                }
             }
         }
-        catch (Exception e) {}
+             catch(Exception e) {
+                    JOptionPane.showMessageDialog(null, "Update Data Gagal");
+             }
+           
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-        try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
-            Statement stat = connection.createStatement();
-            String sqlnya = "insert into peminjam values ('"+KS.getText()+"','"+Nasis.getText()+"','"+Kel.getText()+"','"+KB.getText()+"','"+Nabuk.getText()+"','"+Pen.getText()+"','"+TglPin.getText()+"','"+TglKem.getText()+"','"+Lampin.getText()+"')";
-            PreparedStatement  p = connection.prepareStatement(sqlnya);
-            stat.executeUpdate(sqlnya);
-            JOptionPane.showMessageDialog(null, "Data tersimpan");
-            LoadData();
-        }
-        catch(Exception e) {
-            System.out.print(e);
-            JOptionPane.showMessageDialog(null, "Koneksi Gagal");
-        }
+
+        
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        KS.setText(null);
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+
+            KS.setText(null);
         Nasis.setText(null);
         Kel.setText(null);
         KB.setText(null);
@@ -528,11 +524,13 @@ public class datapeminjam extends javax.swing.JFrame {
         TglPin.setText(null);
         TglKem.setText(null);
         Lampin.setText(null);
-    }//GEN-LAST:event_jButton3ActionPerformed
+        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        // TODO add your handling code here:
-        String x = KS.getText();
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+
+String x = KS.getText();
         try {
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
@@ -546,23 +544,20 @@ public class datapeminjam extends javax.swing.JFrame {
             KB.setText("");
             Nabuk.setText("");
             Pen.setText("");
-            TglPin.setText("");
+            TglPin.setText("");  
             TglKem.setText("");
             Lampin.setText("");
         }
         catch(Exception e) {
             System.out.print(e);
             JOptionPane.showMessageDialog(null, "Koneksi gagal");
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
+        }        
+// TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        if(JOptionPane.showConfirmDialog(null, "Yakin ingin keluar?", "Yakin", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            this.dispose();
-            new ADMIN().show();
-        }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -581,20 +576,21 @@ public class datapeminjam extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(datapeminjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pinjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(datapeminjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pinjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(datapeminjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pinjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(datapeminjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Pinjam.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new datapeminjam().setVisible(true);
+                new Pinjam().setVisible(true);
             }
         });
     }
@@ -609,12 +605,12 @@ public class datapeminjam extends javax.swing.JFrame {
     private javax.swing.JTextField Pen;
     private javax.swing.JTextField TglKem;
     private javax.swing.JTextField TglPin;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

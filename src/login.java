@@ -80,7 +80,7 @@ public class login extends javax.swing.JFrame {
         
         try {
             Class.forName("com.mysql.jdbc.Driver") ;
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost3306/perpustakaan","root","") ;
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan","root","") ;
             Statement stat = con.createStatement() ;
             ResultSet rsUser = stat.executeQuery("SELECT * FROM login WHERE username="+"'"+username+"'"+"and Password='"+password+"'") ;
             System.out.println("KoneksiBerhasil");
@@ -95,7 +95,7 @@ public class login extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Login Berhasil !!");
             if(JOptionPane.showConfirmDialog(null, "Apakah anda ingin membuat akun baru ?","iya", JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION) 
             {
-                new akun().show() ;
+               // new akun().show() ;
                 this.dispose();
                 user.setText("");
                 pass.setText("");

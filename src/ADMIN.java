@@ -76,8 +76,6 @@ public class ADMIN extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        
-        
         this.dispose();
         new Loginadmin().setVisible(true) ;
         
@@ -136,7 +134,7 @@ public class ADMIN extends javax.swing.JFrame {
                 System.out.print(rsnya.getString(1));
                 JOptionPane.showMessageDialog(null, "Data Ditemukan");
                 this.dispose();
-                new pinjam().setVisible(true) ;
+                new Pinjam().setVisible(true) ;
                 
             }
             else{

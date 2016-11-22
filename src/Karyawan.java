@@ -278,8 +278,8 @@ public class Karyawan extends javax.swing.JFrame {
         String x= JOptionPane.showInputDialog(null, "Masukan NIK!!");
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection=DriveManager.getConnection("jdbc:mysql://localhost:/perpustakaan","root","");
-            Statment stat=connection.createStatement();
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "") ;
+            Statement stat=connection.createStatement();
             String cari="SELECT * FROM karyawan WHERE NIK='"+x+"'";
             ResultSet rsnya= stat.executeQuery(cari);
             JOptionPane.showMessageDialog(null, "Data Ditemukan");
@@ -299,7 +299,7 @@ public class Karyawan extends javax.swing.JFrame {
             
             
         }else{
-              JOptionPane.showMassageDialog(null, "Data tidak ada");
+              JOptionPane.showMessageDialog(null, "Data Tidak Ada");
             }
         }catch(Exception e){
             System.out.print(e);
@@ -333,7 +333,7 @@ public class Karyawan extends javax.swing.JFrame {
                 Tun.setText("200000");
                 break;
             default:
-                JOpitonPane.showMessageDialog(null, "Maaf anda salah input , silahkan pilih 1 sampai 5");
+                JOptionPane.showMessageDialog(null, "Maaf anda salah input , silahkan pilih 1 sampai 5");
                 Jab.setText("");
                 Gaji.setText("");
         }
@@ -346,7 +346,7 @@ public class Karyawan extends javax.swing.JFrame {
         Ja.setText(""+x);
         
         int c=Integer.parseInt(Bt.getText());
-        int y=x*Transport;
+        int y=x;
         Bt.setText(""+y);
     }//GEN-LAST:event_AbActionPerformed
 
