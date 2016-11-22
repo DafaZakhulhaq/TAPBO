@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import sun.rmi.transport.Transport;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -190,10 +191,22 @@ public class Karyawan extends javax.swing.JFrame {
         Nakar.setBounds(190, 90, 150, 20);
         getContentPane().add(Jk);
         Jk.setBounds(190, 120, 150, 20);
+
+        Gol.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GolActionPerformed(evt);
+            }
+        });
         getContentPane().add(Gol);
         Gol.setBounds(190, 150, 150, 20);
         getContentPane().add(Jab);
         Jab.setBounds(190, 180, 150, 20);
+
+        Ab.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                AbActionPerformed(evt);
+            }
+        });
         getContentPane().add(Ab);
         Ab.setBounds(190, 210, 150, 20);
         getContentPane().add(Ja);
@@ -220,10 +233,20 @@ public class Karyawan extends javax.swing.JFrame {
         jScrollPane1.setBounds(0, 370, 670, 180);
 
         Save.setText("Hitung");
+        Save.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SaveActionPerformed(evt);
+            }
+        });
         getContentPane().add(Save);
         Save.setBounds(460, 220, 90, 40);
 
         jButton2.setText("Search");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton2);
         jButton2.setBounds(390, 70, 90, 40);
 
@@ -249,6 +272,108 @@ public class Karyawan extends javax.swing.JFrame {
 
         setBounds(0, 0, 683, 604);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        String x= JOptionPane.showInputDialog(null, "Masukan NIK!!");
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection=DriveManager.getConnection("jdbc:mysql://localhost:/perpustakaan","root","");
+            Statment stat=connection.createStatement();
+            String cari="SELECT * FROM karyawan WHERE NIK='"+x+"'";
+            ResultSet rsnya= stat.executeQuery(cari);
+            JOptionPane.showMessageDialog(null, "Data Ditemukan");
+            LoadData();
+            if (rsnya.next()){
+            System.out.print(rsnya.getString(1));
+            NIK.setText(rsnya.getString(1));
+            Nakar.setText(rsnya.getString(2));
+            Jk.setText(rsnya.getString(3));
+            Gol.setText(rsnya.getString(4));
+            Jab.setText(rsnya.getString(5));
+            Ab.setText(rsnya.getString(6));
+            Ja.setText(rsnya.getString(7));
+            Bt.setText(rsnya.getString(8));
+            Tun.setText(rsnya.getString(9));
+            Gaji.setText(rsnya.getString(10));
+            
+            
+        }else{
+              JOptionPane.showMassageDialog(null, "Data tidak ada");
+            }
+        }catch(Exception e){
+            System.out.print(e);
+            JOptionPane.showMessageDialog(null, "Koneksi Gagal");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void GolActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GolActionPerformed
+        // TODO add your handling code here:
+        int golongan=Integer.parseInt(Gol.getText());
+        switch (golongan){
+            case 1:
+                Jab.setText("Manager");
+                Tun.setText("700000");
+                break;
+            case 2:
+                Jab.setText("Supervisor");
+                Tun.setText("500000");
+                break;
+            case 3:
+                Jab.setText("Staff");
+                Tun.setText("300000");
+                break;
+            case 4:
+                Jab.setText("ass staf");
+                Tun.setText("250000");
+                break;
+            case 5:
+                Jab.setText("Honorer");
+                Tun.setText("200000");
+                break;
+            default:
+                JOpitonPane.showMessageDialog(null, "Maaf anda salah input , silahkan pilih 1 sampai 5");
+                Jab.setText("");
+                Gaji.setText("");
+        }
+    }//GEN-LAST:event_GolActionPerformed
+
+    private void AbActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AbActionPerformed
+        // TODO add your handling code here:
+        int a=Integer.parseInt(Ab.getText());
+        int x=a+Integer.parseInt(Ja.getText());
+        Ja.setText(""+x);
+        
+        int c=Integer.parseInt(Bt.getText());
+        int y=x*Transport;
+        Bt.setText(""+y);
+    }//GEN-LAST:event_AbActionPerformed
+
+    private void SaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SaveActionPerformed
+        // TODO add your handling code here:
+        int Golongan=Integer.parseInt(Gol.getText());
+        int Btrans=Integer.parseInt(Bt.getText());
+        int Tunjangan=Integer.parseInt(Tun.getText());
+        int Y=Btrans+Tunjangan+Gajian;
+        
+        if(Golongan==1){
+            Gajian=2000000;
+            Gaji.setText(""+Y);
+        }else if(Golongan==2){
+            Gajian=1500000;
+            Gaji.setText(""+Y);
+        }else if(Golongan==3){
+            Gajian=1000000;
+            Gaji.setText(""+Y);
+        }else if(Golongan==4){
+            Gajian=750000;
+            Gaji.setText(""+Y);
+        }else if(Golongan==5){
+            Gajian=500000;
+            Gaji.setText(""+Y);
+        }
+    }//GEN-LAST:event_SaveActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,4 +442,10 @@ public class Karyawan extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
+    private static class JOpitonPane {
+
+        public JOpitonPane() {
+        }
+    }
 }

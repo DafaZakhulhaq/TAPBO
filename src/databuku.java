@@ -209,7 +209,12 @@ public class databuku extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
+ // TODO add your handling code here:
+ 
+ if(JOptionPane.showConfirmDialog(null, "Yakin Keluar?","Yakin",JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION){
+     this.dispose();
+     new ADMIN().show();
+ }
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -297,15 +302,14 @@ public class databuku extends javax.swing.JFrame {
             String sql = "DELETE FROM databuku WHERE KodeBuku='"+x+"'";
             stat.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Telah Dihapus");
-            LoadData();
+            LoadData();          
         Kode.setText(null);
         Nama.setText(null);
         Nampeng.setText(null);
         bit.setText(null);
         tahun.setText(null);
         }catch (Exception e){
-            System.out.print(e);
-            JOptionPane.showMessageDialog(null, "Koneksi Gagal");
+            JOptionPane.showMessageDialog(null, "Koneksi Gagal"+e);
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
