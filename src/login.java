@@ -18,12 +18,48 @@ import java.sql.Statement ;
 
 public class login extends javax.swing.JFrame {
 
+public Connection conn;
+public Statement cn;
+
+    
     /**
      * Creates new form login
      */
     public login() {
         initComponents();
     }
+    
+    public void koneksi(){
+    try{
+    Class.forName("com.mysql.jdbc.Driver");
+    conn = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan","root","");
+    cn = conn.createStatement();
+    }catch (Exception e){
+    JOptionPane.showMessageDialog(null,"koneksi gagal..");
+    System.out.println(e.getMessage());
+    }
+    }
+
+    public void cariuser(){
+        
+        
+        
+    try{
+    koneksi();
+    String sql = "Select * from login where Username='"+user.getText()+"' and Password='" + pass.getText() + "'";
+    ResultSet rs = cn.executeQuery(sql);
+    if (rs.next())
+    {
+    JOptionPane.showMessageDialog(null, "login Berhasil .....!");
+    new ADMIN().show();
+    this.dispose();
+    }
+    }catch (Exception e){
+    JOptionPane.showMessageDialog(null, "Ada Kesalahan");
+    }
+                
+    }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,43 +110,7 @@ public class login extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        
-        String username = user.getText() ;
-        String password = pass.getText() ;
-        
-        try {
-            Class.forName("com.mysql.jdbc.Driver") ;
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan","root","") ;
-            Statement stat = con.createStatement() ;
-            ResultSet rsUser = stat.executeQuery("SELECT * FROM login WHERE username="+"'"+username+"'"+"and Password='"+password+"'") ;
-            System.out.println("KoneksiBerhasil");
-        if(rsUser.next())
-        {
-            JOptionPane.showMessageDialog(null, "Login Berhasil");
-            new ADMIN().setVisible(true) ;
-            this.dispose();
-        }
-        else
-        {
-            JOptionPane.showMessageDialog(null, "Login Berhasil !!");
-            if(JOptionPane.showConfirmDialog(null, "Apakah anda ingin membuat akun baru ?","iya", JOptionPane.YES_NO_OPTION)== JOptionPane.YES_OPTION) 
-            {
-               // new akun().show() ;
-                this.dispose();
-                user.setText("");
-                pass.setText("");
-                user.requestFocus();
-                
-            }}
-        }
-     
-        catch(Exception e)
-          {
-                
-            JOptionPane.showMessageDialog(null,"Gagal") ;    
-                
-          }
-
+        cariuser() ;
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
