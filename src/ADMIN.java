@@ -33,25 +33,15 @@ public class ADMIN extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("jLabel1");
+        jLabel1.setText("MENU");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(160, 20, 34, 14);
-
-        jButton1.setText("Siswa");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(280, 100, 110, 120);
+        jLabel1.setBounds(180, 10, 100, 70);
 
         jButton2.setText("Admin");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -60,16 +50,16 @@ public class ADMIN extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(20, 100, 110, 120);
+        jButton2.setBounds(40, 110, 110, 120);
 
-        jButton3.setText("Karyawan");
+        jButton3.setText("Siswa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(150, 100, 110, 120);
+        jButton3.setBounds(240, 110, 110, 120);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
@@ -86,13 +76,13 @@ public class ADMIN extends javax.swing.JFrame {
 
         
         
-        String x = JOptionPane.showInputDialog(null,"Masukan NIK !!") ;
+        String x = JOptionPane.showInputDialog(null,"Masukan NIS !!") ;
         try{
             
             Class.forName("com.mysql.jdbc.Driver") ;
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost3306/perpustakaan","root","") ;
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan","root","") ;
             Statement stat = con.createStatement() ;
-            String cari = "SELECT * FROM karyawan WHERE NIK='"+x+"'" ;
+            String cari = "SELECT * FROM peminjam WHERE NIS='"+x+"'" ;
             ResultSet rsnya = stat.executeQuery(cari) ;
             
             if(rsnya.next())
@@ -100,7 +90,7 @@ public class ADMIN extends javax.swing.JFrame {
                 System.out.print(rsnya.getString(1));
                 JOptionPane.showMessageDialog(null, "Data Ditemukan");
                 this.dispose();
-                new Karyawan().setVisible(true) ;
+                new peminjam().setVisible(true) ;
                 
             }
             else{
@@ -117,42 +107,6 @@ public class ADMIN extends javax.swing.JFrame {
           
 
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-
-        String x = JOptionPane.showInputDialog(null,"Masukan NIS !!") ;
-        try{
-            
-            Class.forName("com.mysql.jdbc.Driver") ;
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost3306/perpustakaan","root","") ;
-            Statement stat = con.createStatement() ;
-            String cari = "SELECT * FROM peminjaman WHERE NIS='"+x+"'" ;
-            ResultSet rsnya = stat.executeQuery(cari) ;
-            
-            if(rsnya.next())
-            {
-                System.out.print(rsnya.getString(1));
-                JOptionPane.showMessageDialog(null, "Data Ditemukan");
-                this.dispose();
-                new Pinjam().setVisible(true) ;
-                
-            }
-            else{
-                JOptionPane.showMessageDialog(null, "Data tidak ada");
-                
-            }
-        }
-        catch (Exception e)
-        {
-          
-            JOptionPane.showMessageDialog(null, "Koneksi Gagal");
-            
-        }
-          
-        
-
-// TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -190,7 +144,6 @@ public class ADMIN extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

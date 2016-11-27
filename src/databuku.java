@@ -31,7 +31,7 @@ public class databuku extends javax.swing.JFrame {
         try{
             Con = null;
             Class.forName("com.mysql.jbdc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
             String sql = "" + "SELECT * from databuku";
             Statement stat = con.createStatement();
             ResultSet res = stat.executeQuery(sql);
@@ -39,7 +39,7 @@ public class databuku extends javax.swing.JFrame {
                 String KodeBuku = res.getString("KodeBuku");
                 String NamaBuku = res.getString("NamaBuku");
                 String NamaPengarang = res.getString("NamaPengarang");
-                String Penerbit = res.getString("Penerbit");
+                String Penerbit = res.getString("Penerbit");    
                 String TahunTerbit = res.getString("TahunTerbit");
                 Object[] data = {KodeBuku, NamaBuku, NamaPengarang, Penerbit, TahunTerbit, };
                 Tabbuk.addRow(data);                

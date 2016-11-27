@@ -1,3 +1,9 @@
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -8,58 +14,14 @@
  *
  * @author Dafa Zakhulhaq
  */
+public class Daftar extends javax.swing.JFrame {
 
-import javax.swing.JOptionPane ;
-import java.sql.Connection ;
-import java.sql.DriverManager ;
-import java.sql.PreparedStatement ;
-import java.sql.ResultSet ;
-import java.sql.Statement ;
-
-public class login extends javax.swing.JFrame {
-
-public Connection conn;
-public Statement cn;
-
-    
     /**
-     * Creates new form login
+     * Creates new form Daftar
      */
-    public login() {
+    public Daftar() {
         initComponents();
     }
-    
-    public void koneksi(){
-    try{
-    Class.forName("com.mysql.jdbc.Driver");
-    conn = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan","root","");
-    cn = conn.createStatement();
-    }catch (Exception e){
-    JOptionPane.showMessageDialog(null,"koneksi gagal..");
-    System.out.println(e.getMessage());
-    }
-    }
-
-    public void cariuser(){
-        
-        
-        
-    try{
-    koneksi();
-    String sql = "Select * from login where Username='"+user.getText()+"' and Password='" + pass.getText() + "'";
-    ResultSet rs = cn.executeQuery(sql);
-    if (rs.next())
-    {
-    JOptionPane.showMessageDialog(null, "login Berhasil .....!");
-    new ADMIN().show();
-    this.dispose();
-    }
-    }catch (Exception e){
-    JOptionPane.showMessageDialog(null, "Ada Kesalahan");
-    }
-                
-    }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -70,64 +32,81 @@ public Statement cn;
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
         pass = new javax.swing.JTextField();
         user = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setText("password");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 140, 60, 30);
-
-        jLabel2.setText("LOGIN");
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(170, 40, 60, 40);
-
-        jLabel3.setText("username");
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(60, 90, 70, 30);
-        getContentPane().add(pass);
-        pass.setBounds(140, 130, 200, 40);
-        getContentPane().add(user);
-        user.setBounds(140, 90, 200, 40);
-
-        jButton1.setText("LOGIN");
+        jButton1.setText("Kembali");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(220, 200, 120, 70);
+        jButton1.setBounds(0, 0, 100, 40);
 
-        jButton2.setText("DAFTAR");
+        jLabel1.setText("password");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(60, 140, 60, 30);
+        getContentPane().add(pass);
+        pass.setBounds(140, 130, 200, 40);
+        getContentPane().add(user);
+        user.setBounds(140, 90, 200, 40);
+
+        jLabel3.setText("username");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(60, 90, 70, 30);
+
+        jLabel2.setText("Daftar");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(170, 40, 60, 40);
+
+        jButton2.setText("Daftar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(60, 200, 120, 70);
+        jButton2.setBounds(150, 200, 120, 70);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        cariuser() ;
+        this.dispose();
+        new login().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        new Daftar().setVisible(true);
+
+       
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
+            Statement stat = connection.createStatement();
+            String sqlnya = ("insert into login values ('"+user.getText()+"','"+pass.getText()+"')");
+            stat.executeUpdate(sqlnya);
+            JOptionPane.showMessageDialog(null, "Data Tersimpan");
+            user.setText(null);
+            pass.setText(null);
+            
+        }catch (Exception e){
+            System.out.print(e);
+            JOptionPane.showMessageDialog(null, "Koneksi Gagal");
+        }
+         
         
+
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
@@ -147,20 +126,20 @@ public Statement cn;
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Daftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Daftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Daftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(login.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Daftar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new login().setVisible(true);
+                new Daftar().setVisible(true);
             }
         });
     }

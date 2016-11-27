@@ -274,17 +274,17 @@ public class Pinjam extends javax.swing.JFrame {
 
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "NIS", "NAMA SISWA", "KODE BUKU", "NAMA BUKU", "PENERBIT", "TGL PINJAM", "TGL KEMBALI", "LAMA PINJAM"
+                "NIS", "NAMA SISWA", "KELAS", "KODE BUKU", "NAMA BUKU", "PENERBIT", "TGL PINJAM", "TGL KEMBALI", "LAMA PINJAM"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
+                false, true, false, false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -330,7 +330,7 @@ public class Pinjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(530, 70, 80, 50);
+        jButton7.setBounds(520, 70, 80, 50);
 
         jButton8.setText("Delete");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
@@ -348,9 +348,9 @@ public class Pinjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(530, 210, 80, 50);
+        jButton3.setBounds(520, 210, 80, 50);
 
-        pack();
+        setBounds(0, 0, 641, 599);
     }// </editor-fold>//GEN-END:initComponents
 
     private void KSActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_KSActionPerformed
@@ -511,6 +511,30 @@ public class Pinjam extends javax.swing.JFrame {
 
         
         
+        try{
+            Class.forName("com.mysql.jdbc.Driver");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
+            Statement stat = connection.createStatement();
+            String sqlnya = ("insert into peminjam values ('"+KS.getText()+"','"+Nasis.getText()+"','"+Kel.getText()+"','"+
+                    KB.getText()+"','"+Nabuk.getText()+"','"+Pen.getText()+"','"+TglPin.getText()+"','"+TglKem.getText()+"','"+Lampin.getText()+"')");
+            
+            PreparedStatement p=connection.prepareStatement(sqlnya) ;
+            stat.executeUpdate(sqlnya);
+            JOptionPane.showMessageDialog(null, "Data Tersimpan");
+            LoadData();
+        }catch (Exception e){
+            System.out.print(e);
+            JOptionPane.showMessageDialog(null, "Koneksi Gagal");
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
@@ -556,7 +580,14 @@ String x = KS.getText();
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+
+
+        this.dispose();
+        new Loginadmin().setVisible(true) ;
+        
+        
+        
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
