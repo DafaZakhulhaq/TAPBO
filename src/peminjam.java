@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,23 +14,58 @@ import javax.swing.JOptionPane;
 
 /**
  *
+ * 
  * @author Dafa Zakhulhaq
  */
+
+
 public class peminjam extends javax.swing.JFrame {
 
+
+    private DefaultTableModel tabelcd ;
     
     
     
+    public void clean(){
+        
+        int baris = tabelcd.getRowCount();
+        for (int a=0;a<baris;a++)
+        {
+            tabelcd.removeRow(0);
+            
+        }
+        
+    }
     /**
-     * Creates new form peminjam
-    
-    
+     *
+     *   
     */
     public peminjam() {
         
-    
-                
  initComponents();
+ 
+ {
+        
+        tabelcd = new DefaultTableModel() ;
+        jTable4.setModel(tabelcd);
+       
+        tabelcd.addColumn("NIS");
+        tabelcd.addColumn("NAMA SISWA");
+        tabelcd.addColumn("KODE SISWA");
+        tabelcd.addColumn("NAMA BUKU");
+        tabelcd.addColumn("PENERBIT");
+        tabelcd.addColumn("TANGGAL PINJAM");
+        tabelcd.addColumn("TANGGAL KEMBALI");
+        
+        
+        tabelcd.getDataVector().removeAllElements();
+        tabelcd.fireTableDataChanged();
+        
+      
+        
+        
+    }
+ 
       
     }
 
@@ -45,6 +81,7 @@ public class peminjam extends javax.swing.JFrame {
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable4 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -82,6 +119,15 @@ public class peminjam extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(20, 10, 120, 60);
 
+        jButton2.setText("PINJAM");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(260, 240, 150, 60);
+
         setBounds(0, 0, 674, 362);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -95,6 +141,42 @@ public class peminjam extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        
+        
+        try {
+            
+            Connection c = KoneksiLokal.getKoneksi();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM peminjam";
+            ResultSet r = s.executeQuery(sql);
+            clean() ;
+            while(r.next()){
+                Object [] o = new Object[9];
+                o[0] = r.getString("NIS");
+                o[1] = r.getString("NamaSIswa");
+                o[2] = r.getString("Kelas");
+                o[3] = r.getString("KodeBuku");
+                o[4] = r.getString("NamaBuku");
+                o[5] = r.getString("Penerbit");
+                o[6] = r.getString("TglPinjam");
+                o[7] = r.getString("TglKembali");
+                o[8] = r.getString("LamaPinjam");
+            
+                
+                tabelcd.addRow(o);
+
+            
+        }}catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "gagal koneksi" + e);
+            
+        }
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -133,6 +215,7 @@ public class peminjam extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables

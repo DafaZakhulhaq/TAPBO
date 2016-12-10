@@ -1,4 +1,5 @@
 
+import java.awt.Component;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -18,46 +19,71 @@ import javax.swing.table.DefaultTableModel;
  * @author Dafa Zakhulhaq
  */
 public class databuku extends javax.swing.JFrame {
+     
+    private DefaultTableModel tabelcd ;
+   
     
-    private DefaultTableModel Tabbuk;
-    Connection Con;
+    public void clean(){
+        
+        int baris = tabelcd.getRowCount();
+        for (int a=0;a<baris;a++)
+        {
+            tabelcd.removeRow(0);
+            
+        }
+        
+    }
     
     private void LoadData(){
         
-        Object kolom[] = {"KODE BUKU","NAMA BUKU","NAMA PENGARANG","PENERBIT","TAHUN TERBIT"};
-        Tabbuk = new DefaultTableModel(null,kolom);
-        Tabuk.setModel(Tabbuk);
-        jScrollPane1.getViewport().add(Tabuk,null);
-        try{
-            Con = null;
-            Class.forName("com.mysql.jbdc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
-            String sql = "" + "SELECT * from databuku";
-            Statement stat = con.createStatement();
-            ResultSet res = stat.executeQuery(sql);
-            while(res.next()){
-                String KodeBuku = res.getString("KodeBuku");
-                String NamaBuku = res.getString("NamaBuku");
-                String NamaPengarang = res.getString("NamaPengarang");
-                String Penerbit = res.getString("Penerbit");    
-                String TahunTerbit = res.getString("TahunTerbit");
-                Object[] data = {KodeBuku, NamaBuku, NamaPengarang, Penerbit, TahunTerbit, };
-                Tabbuk.addRow(data);                
-            }
-            Tabuk.getColumnModel().getColumn(0).setPreferredWidth(20);
-            Tabuk.getColumnModel().getColumn(1).setPreferredWidth(100);
-            Tabuk.getColumnModel().getColumn(2).setPreferredWidth(100);
-            Tabuk.getColumnModel().getColumn(3).setPreferredWidth(20);
-            Tabuk.getColumnModel().getColumn(4).setPreferredWidth(80);
-        }catch(Exception ex){
-            JOptionPane.showMessageDialog(this,"Error : " + ex);
+        
+             
+        try {
+            
+            Connection c = KoneksiLokal.getKoneksi();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM databuku";
+            ResultSet r = s.executeQuery(sql);
+            clean();
+            while(r.next()){
+                Object [] o = new Object[5];
+                o[0] = r.getString("KodeBuku");
+                o[1] = r.getString("NamaBuku");
+                o[2] = r.getString("NamaPengarang");
+                o[3] = r.getString("Penerbit");
+                o[4] = r.getString("TahunTerbit");
+                tabelcd.addRow(o);
+
+            
+        }}catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "gagal koneksi" + e);
+            
         }
+   
+        
     }
 
     
     public databuku() {
         initComponents();
         setLocationRelativeTo(null);
+        
+         
+        tabelcd = new DefaultTableModel() ;
+        tt.setModel(tabelcd);
+       
+        tabelcd.addColumn("KODE BUKU");
+        tabelcd.addColumn("NAMA BUKU");
+        tabelcd.addColumn("NAMA PENGARANG");
+        tabelcd.addColumn("NAMA PENERBIT");
+        tabelcd.addColumn("TAHUN TERBIT");
+    
+        tabelcd.getDataVector().removeAllElements();
+        tabelcd.fireTableDataChanged();
+        
+   
+        
     }
 
     /**
@@ -87,7 +113,7 @@ public class databuku extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        Tabuk = new javax.swing.JTable();
+        tt = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -180,18 +206,23 @@ public class databuku extends javax.swing.JFrame {
         getContentPane().add(jButton6);
         jButton6.setBounds(370, 180, 80, 30);
 
-        Tabuk.setModel(new javax.swing.table.DefaultTableModel(
+        tt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3", "Title 4", "null"
             }
-        ));
-        jScrollPane1.setViewportView(Tabuk);
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(tt);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 240, 452, 120);
@@ -247,11 +278,12 @@ public class databuku extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        
+// TODO add your handling code here:
         
         try{
             Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
             Statement stat = connection.createStatement();
             String sqlnya = ("insert into databuku values ('"+Kode.getText()+"','"+Nama.getText()+"','"+Nampeng.getText()+"','"+
                     bit.getText()+"','"+tahun.getText()+"')");
@@ -270,11 +302,10 @@ public class databuku extends javax.swing.JFrame {
         
         int coba = JOptionPane.showConfirmDialog(null, "Yakin Ubah Data?","Confirmation",JOptionPane.YES_NO_OPTION);
         try{
-            Class.forName("com.mysql.jdbc.Drive");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
-            String sql = "update databuku set KodeBuku=?, NamaBuku?, NamaPengarang=?, Penerbit=?, TahunTerbit=? where "+
-                    "KodeBuku='"+Kode.getText()+"'";
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
+            String sql = "update databuku set KodeBuku=?,NamaBuku=?, NamaPengarang=?, Penerbit=?, TahunTerbit=? where KodeBuku='"+Kode.getText()+"'";
             PreparedStatement st = connection.prepareStatement(sql);
+          
             if(coba == 0){
                 try{
                     st.setString(1, Kode.getText());
@@ -282,6 +313,7 @@ public class databuku extends javax.swing.JFrame {
                     st.setString(3, Nampeng.getText());
                     st.setString(4, bit.getText());
                     st.setString(5, tahun.getText());
+                    st.executeUpdate();
                     JOptionPane.showMessageDialog(null, "Update Data Sukses");
                     LoadData();
                 }catch(Exception e){
@@ -294,10 +326,9 @@ public class databuku extends javax.swing.JFrame {
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         
-        String x = Kode.getText();
+        String x = JOptionPane.showInputDialog(null, "Masukkan KodeBuku");
         try{
-            Class.forName("com.mysql.jdbc.Drive");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
             Statement stat = connection.createStatement();
             String sql = "DELETE FROM databuku WHERE KodeBuku='"+x+"'";
             stat.executeUpdate(sql);
@@ -352,7 +383,6 @@ public class databuku extends javax.swing.JFrame {
     private javax.swing.JTextField Kode;
     private javax.swing.JTextField Nama;
     private javax.swing.JTextField Nampeng;
-    private javax.swing.JTable Tabuk;
     private javax.swing.JTextField bit;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -368,5 +398,6 @@ public class databuku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField tahun;
+    private javax.swing.JTable tt;
     // End of variables declaration//GEN-END:variables
 }

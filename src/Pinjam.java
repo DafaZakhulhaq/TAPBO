@@ -21,57 +21,79 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 
 public class Pinjam extends javax.swing.JFrame {
-
-    private DefaultTableModel Tabpin;
-    Connection Con;
+ 
     
-    private void LoadData() {
-        Object kolom[] = {"NIS","N. SISWA","K. BUKU","N. BUKU", "PENERBIT", "TGL PINJAM", "TGL KEMBALI", "LAMA PINJAM"};
-        Tabpin = new DefaultTableModel(null, kolom);
-        jTable4.setModel(Tabpin);
-        jScrollPane2.getViewport().add(jTable4,null);
+    private DefaultTableModel tabelcd ;
+   
+    
+    
+    public void clean(){
         
-        try{
-            Con = null;
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
-            String sql = "" + "SELECT * from peminjam";
-            Statement stat = con.createStatement();
-            ResultSet res = stat.executeQuery(sql);
-            while(res.next()) {
-                String NIS = res.getString("NIS");
-                String NamaSiswa = res.getString("NamaSiswa");
-                String Kelas = res.getString("Kelas");
-                String KodeBuku = res.getString("KodeBuku");
-                String NamaBuku = res.getString("NamaBuku");
-                String Penerbit = res.getString("Penerbit");
-                String TglPinjam = res.getString("TglPinjam");
-                String TglKembali = res.getString("TglKembali");
-                String LamaPinjam = res.getString("LamaPinjam");
-                Object[] data = {NIS,NamaSiswa,Kelas,KodeBuku,NamaBuku,Penerbit,TglPinjam,TglKembali,LamaPinjam};
-                //Object[] data = [NIS,NamaSiswa,Kelas,KodeBuku,NamaBuku,Penerbit,TglPinjam,TglKembali,LamaPinjam];
-                Tabpin.addRow(data);
-            }
-            jTable4.getColumnModel().getColumn(0).setPreferredWidth(50);
-            jTable4.getColumnModel().getColumn(1).setPreferredWidth(100);
-            jTable4.getColumnModel().getColumn(2).setPreferredWidth(100);
-            jTable4.getColumnModel().getColumn(3).setPreferredWidth(100);
-            jTable4.getColumnModel().getColumn(4).setPreferredWidth(100);
-            jTable4.getColumnModel().getColumn(5).setPreferredWidth(100);
-            jTable4.getColumnModel().getColumn(6).setPreferredWidth(80);
-            jTable4.getColumnModel().getColumn(7).setPreferredWidth(80);
-            jTable4.getColumnModel().getColumn(8).setPreferredWidth(50);
+        int baris = tabelcd.getRowCount();
+        for (int a=0;a<baris;a++)
+        {
+            tabelcd.removeRow(0);
+            
         }
-        catch(Exception e) {
-            JOptionPane.showMessageDialog(null,""+e);
-        }
+        
     }
     
-    /**
-     * Creates new form datapeminjam
-     */
+    private void LoadData() {
+
+             try {
+            
+            Connection c = KoneksiLokal.getKoneksi();
+            Statement s = c.createStatement();
+            String sql = "SELECT * FROM peminjam";
+            ResultSet r = s.executeQuery(sql);
+            clean() ;
+            while(r.next()){
+                Object [] o = new Object[9];
+                o[0] = r.getString("NIS");
+                o[1] = r.getString("NamaSIswa");
+                o[2] = r.getString("Kelas");
+                o[3] = r.getString("KodeBuku");
+                o[4] = r.getString("NamaBuku");
+                o[5] = r.getString("Penerbit");
+                o[6] = r.getString("TglPinjam");
+                o[7] = r.getString("TglKembali");
+                o[8] = r.getString("LamaPinjam");
+            
+                
+                tabelcd.addRow(o);
+
+            
+        }}catch(Exception e){
+            
+            JOptionPane.showMessageDialog(null, "gagal koneksi" + e);
+            
+        }
+   
+        
+    }
+    
+    
+    
     public Pinjam() {
         initComponents();
+        tabelcd = new DefaultTableModel() ;
+        jTable4.setModel(tabelcd);
+       
+        tabelcd.addColumn("NIS");
+        tabelcd.addColumn("NAMA SISWA");
+        tabelcd.addColumn("KELAS");
+        tabelcd.addColumn("KODE BUKU");
+        tabelcd.addColumn("NAMA BUKU");
+        tabelcd.addColumn("PENERBIT");
+        tabelcd.addColumn("TANGGAL PINJAM");
+        tabelcd.addColumn("TANGGAL KEMBALI");
+        tabelcd.addColumn("LAMA PINJAM");
+        
+        
+        tabelcd.getDataVector().removeAllElements();
+        tabelcd.fireTableDataChanged();
+        
+        
     }
 
     /**
@@ -475,10 +497,9 @@ public class Pinjam extends javax.swing.JFrame {
         // TODO add your handling code here:
         int coba = JOptionPane.showConfirmDialog(null, "Yakin untuk mengubah data ini?", "Confirmation", JOptionPane.YES_NO_OPTION);
         try{
-            Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "") ;
             Statement stat=connection.createStatement();
-            String sql = "update peminjam set NIS=?, NamaSiswa=?, Kelas=?, KodeBuku=?, NamaBuku=?, Penerbit=?,"+"TglPinjam=?,TglKembali=?,LamaPinjam=? where" + "NIS='" + KS.getText()+"'";
+            String sql = "update peminjam set NIS=?, NamaSiswa=?, Kelas=?, KodeBuku=?, NamaBuku=?, Penerbit=?,"+"TglPinjam=?,TglKembali=?,LamaPinjam=? where NIS='" + KS.getText()+"'";
             PreparedStatement st = connection.prepareStatement(sql);
             if(coba==0) {
                 try{
@@ -520,8 +541,9 @@ public class Pinjam extends javax.swing.JFrame {
             
             PreparedStatement p=connection.prepareStatement(sqlnya) ;
             stat.executeUpdate(sqlnya);
-            JOptionPane.showMessageDialog(null, "Data Tersimpan");
             LoadData();
+            JOptionPane.showMessageDialog(null, "Data Tersimpan");
+           
         }catch (Exception e){
             System.out.print(e);
             JOptionPane.showMessageDialog(null, "Koneksi Gagal");
@@ -554,14 +576,14 @@ public class Pinjam extends javax.swing.JFrame {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
 
-String x = KS.getText();
+        String x = JOptionPane.showInputDialog(null, "Masukkan NIS");
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/perpustakaan", "root", "");
+            Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
             Statement stat = connection.createStatement();
             String sql = "DELETE FROM peminjam WHERE NIS = '"+x+"'";
             stat.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "Data Telah Dihapus");
+            LoadData();
             KS.setText("");
             Nasis.setText("");
             Kel.setText("");
