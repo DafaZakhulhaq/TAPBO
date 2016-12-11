@@ -35,14 +35,20 @@ public class ADMIN extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Stencil Std", 0, 48)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("MENU");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(180, 10, 100, 70);
+        jLabel1.setBounds(180, 30, 220, 70);
 
+        jButton2.setBackground(new java.awt.Color(153, 153, 255));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(51, 51, 51));
         jButton2.setText("Admin");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,8 +56,11 @@ public class ADMIN extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(40, 110, 110, 120);
+        jButton2.setBounds(50, 110, 110, 120);
 
+        jButton3.setBackground(new java.awt.Color(153, 153, 255));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton3.setForeground(new java.awt.Color(51, 51, 51));
         jButton3.setText("Siswa");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -59,26 +68,26 @@ public class ADMIN extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(240, 110, 110, 120);
+        jButton3.setBounds(350, 110, 110, 120);
 
-        setBounds(0, 0, 416, 339);
+        jLabel2.setIcon(new javax.swing.ImageIcon("F:\\TS-Photo-Books.jpg")); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(0, 0, 490, 310);
+
+        setBounds(0, 0, 494, 340);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         this.dispose();
         new Loginadmin().setVisible(true) ;
-        
-        
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        
-        
         String x = JOptionPane.showInputDialog(null,"Masukan NIS !!") ;
         try{
-            
             Class.forName("com.mysql.jdbc.Driver") ;
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan","root","") ;
             Statement stat = con.createStatement() ;
@@ -147,5 +156,6 @@ public class ADMIN extends javax.swing.JFrame {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 }

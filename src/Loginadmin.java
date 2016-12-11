@@ -44,35 +44,46 @@ public class Loginadmin extends javax.swing.JFrame {
         USER = new javax.swing.JTextField();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("USERNAME");
         getContentPane().add(jLabel1);
         jLabel1.setBounds(50, 70, 90, 60);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("PASSWORD");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(50, 110, 90, 60);
 
+        jLabel3.setFont(new java.awt.Font("Stencil Std", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("LOGIN ADMIN");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(170, 20, 90, 60);
+        jLabel3.setBounds(140, 20, 180, 60);
         getContentPane().add(PASS);
-        PASS.setBounds(150, 120, 150, 40);
+        PASS.setBounds(150, 130, 150, 30);
         getContentPane().add(USER);
-        USER.setBounds(150, 80, 150, 40);
+        USER.setBounds(150, 90, 150, 30);
 
-        jButton2.setText("BACK");
+        jButton2.setBackground(new java.awt.Color(51, 51, 51));
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
+        jButton2.setText("Kembali");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton2ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(0, 0, 80, 30);
+        jButton2.setBounds(309, 270, 90, 30);
 
+        jButton3.setBackground(new java.awt.Color(204, 255, 102));
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jButton3.setText("LOGIN");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -80,7 +91,11 @@ public class Loginadmin extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(150, 180, 110, 60);
+        jButton3.setBounds(150, 190, 110, 50);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\tumblr_ncpzyd5AuB1sg3qr6o1_500.jpg")); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(-20, -10, 430, 330);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
@@ -95,10 +110,6 @@ public class Loginadmin extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
 
-        
-        
-        
-        
         if(USER.getText().equals("Admin1")){
         if(PASS.getText().equals("DataBuku")){
         
@@ -162,5 +173,6 @@ public class Loginadmin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,8 +21,6 @@ import javax.swing.table.DefaultTableModel;
 public class databuku extends javax.swing.JFrame {
      
     private DefaultTableModel tabelcd ;
-   
-    
     public void clean(){
         
         int baris = tabelcd.getRowCount();
@@ -35,9 +33,7 @@ public class databuku extends javax.swing.JFrame {
     }
     
     private void LoadData(){
-        
-        
-             
+      
         try {
             
             Connection c = KoneksiLokal.getKoneksi();
@@ -52,19 +48,13 @@ public class databuku extends javax.swing.JFrame {
                 o[2] = r.getString("NamaPengarang");
                 o[3] = r.getString("Penerbit");
                 o[4] = r.getString("TahunTerbit");
-                tabelcd.addRow(o);
-
-            
+                tabelcd.addRow(o);  
         }}catch(Exception e){
             
             JOptionPane.showMessageDialog(null, "gagal koneksi" + e);
-            
-        }
-   
-        
+        } 
     }
 
-    
     public databuku() {
         initComponents();
         setLocationRelativeTo(null);
@@ -81,9 +71,7 @@ public class databuku extends javax.swing.JFrame {
     
         tabelcd.getDataVector().removeAllElements();
         tabelcd.fireTableDataChanged();
-        
    
-        
     }
 
     /**
@@ -95,6 +83,7 @@ public class databuku extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel7 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -114,44 +103,60 @@ public class databuku extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tt = new javax.swing.JTable();
+        jLabel8 = new javax.swing.JLabel();
+
+        jLabel7.setIcon(new javax.swing.ImageIcon("F:\\books.png")); // NOI18N
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Nama Buku");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 90, 60, 30);
+        jLabel1.setBounds(30, 110, 80, 30);
 
+        jLabel2.setFont(new java.awt.Font("Futura Bk BT", 1, 40)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("DATA BUKU");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(130, 0, 80, 40);
+        jLabel2.setBounds(140, 20, 250, 40);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Kode Buku");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 60, 80, 40);
+        jLabel3.setBounds(30, 60, 100, 40);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Nama Pengarang");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 120, 110, 40);
+        jLabel4.setBounds(30, 140, 130, 40);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tahun Terbit");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 180, 90, 30);
+        jLabel5.setBounds(40, 230, 110, 30);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Penertbit");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(30, 150, 60, 30);
+        jLabel6.setBounds(40, 190, 80, 30);
         getContentPane().add(tahun);
-        tahun.setBounds(140, 180, 120, 30);
+        tahun.setBounds(150, 230, 120, 30);
         getContentPane().add(Kode);
-        Kode.setBounds(140, 60, 120, 30);
+        Kode.setBounds(150, 70, 120, 30);
         getContentPane().add(Nama);
-        Nama.setBounds(140, 90, 120, 30);
+        Nama.setBounds(150, 110, 120, 30);
         getContentPane().add(Nampeng);
-        Nampeng.setBounds(140, 120, 120, 30);
+        Nampeng.setBounds(150, 150, 120, 30);
         getContentPane().add(bit);
-        bit.setBounds(140, 150, 120, 30);
+        bit.setBounds(150, 190, 120, 30);
 
+        jButton1.setBackground(new java.awt.Color(0, 204, 0));
         jButton1.setText("Save");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,8 +164,9 @@ public class databuku extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(270, 180, 80, 30);
+        jButton1.setBounds(280, 200, 80, 30);
 
+        jButton2.setBackground(new java.awt.Color(204, 204, 255));
         jButton2.setText("Refresh");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -168,8 +174,9 @@ public class databuku extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(370, 60, 80, 30);
+        jButton2.setBounds(380, 80, 80, 30);
 
+        jButton3.setBackground(new java.awt.Color(0, 204, 204));
         jButton3.setText("Edit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,8 +184,9 @@ public class databuku extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(270, 120, 80, 30);
+        jButton3.setBounds(280, 140, 80, 30);
 
+        jButton4.setBackground(new java.awt.Color(255, 204, 102));
         jButton4.setText("Search");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -186,8 +194,9 @@ public class databuku extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(270, 60, 80, 30);
+        jButton4.setBounds(280, 80, 80, 30);
 
+        jButton5.setBackground(new java.awt.Color(255, 255, 0));
         jButton5.setText("Delete");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -195,8 +204,9 @@ public class databuku extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton5);
-        jButton5.setBounds(370, 120, 80, 30);
+        jButton5.setBounds(380, 140, 80, 30);
 
+        jButton6.setBackground(new java.awt.Color(255, 51, 51));
         jButton6.setText("Exit");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -204,14 +214,14 @@ public class databuku extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(370, 180, 80, 30);
+        jButton6.setBounds(380, 200, 80, 30);
 
         tt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "null"
+                "Kode Buku", "Nama Buku", "Nama Pengarang", "Penerbit", "Tahun terbit"
             }
         ) {
             Class[] types = new Class [] {
@@ -225,9 +235,13 @@ public class databuku extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tt);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 240, 452, 120);
+        jScrollPane1.setBounds(20, 280, 452, 120);
 
-        setBounds(0, 0, 479, 423);
+        jLabel8.setIcon(new javax.swing.ImageIcon("F:\\books.png")); // NOI18N
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(0, 0, 510, 420);
+
+        setBounds(0, 0, 504, 457);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -396,6 +410,8 @@ public class databuku extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField tahun;
     private javax.swing.JTable tt;

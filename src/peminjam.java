@@ -21,34 +21,21 @@ import javax.swing.table.DefaultTableModel;
 
 public class peminjam extends javax.swing.JFrame {
 
-
     private DefaultTableModel tabelcd ;
-    
-    
-    
     public void clean(){
         
         int baris = tabelcd.getRowCount();
         for (int a=0;a<baris;a++)
         {
             tabelcd.removeRow(0);
-            
         }
-        
     }
-    /**
-     *
-     *   
-    */
     public peminjam() {
         
  initComponents();
- 
  {
-        
         tabelcd = new DefaultTableModel() ;
         jTable4.setModel(tabelcd);
-       
         tabelcd.addColumn("NIS");
         tabelcd.addColumn("NAMA SISWA");
         tabelcd.addColumn("KODE SISWA");
@@ -56,17 +43,10 @@ public class peminjam extends javax.swing.JFrame {
         tabelcd.addColumn("PENERBIT");
         tabelcd.addColumn("TANGGAL PINJAM");
         tabelcd.addColumn("TANGGAL KEMBALI");
-        
-        
         tabelcd.getDataVector().removeAllElements();
         tabelcd.fireTableDataChanged();
-        
-      
-        
-        
-    }
- 
-      
+
+    } 
     }
 
     /**
@@ -82,6 +62,7 @@ public class peminjam extends javax.swing.JFrame {
         jTable4 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -108,8 +89,10 @@ public class peminjam extends javax.swing.JFrame {
         jScrollPane4.setViewportView(jTable4);
 
         getContentPane().add(jScrollPane4);
-        jScrollPane4.setBounds(20, 110, 620, 120);
+        jScrollPane4.setBounds(10, 60, 570, 120);
 
+        jButton1.setBackground(new java.awt.Color(0, 0, 0));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Kembali");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -117,8 +100,11 @@ public class peminjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(20, 10, 120, 60);
+        jButton1.setBounds(500, 290, 100, 40);
 
+        jButton2.setBackground(new java.awt.Color(0, 153, 0));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("PINJAM");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,26 +112,23 @@ public class peminjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(260, 240, 150, 60);
+        jButton2.setBounds(230, 210, 150, 60);
 
-        setBounds(0, 0, 674, 362);
+        jLabel1.setIcon(new javax.swing.ImageIcon("F:\\bibliothek_regal_front_01.jpg")); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-6, -6, 670, 350);
+
+        setBounds(0, 0, 608, 362);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        
+
         this.dispose();
         new ADMIN().setVisible(true) ;
-        
-        
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-        
-        
+
         try {
             
             Connection c = KoneksiLokal.getKoneksi();
@@ -216,6 +199,7 @@ public class peminjam extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTable4;
     // End of variables declaration//GEN-END:variables

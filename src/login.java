@@ -41,9 +41,7 @@ public Statement cn;
     }
 
     public void cariuser(){
-        
-        
-        
+
     try{
     koneksi();
     String sql = "Select * from login where Username='"+user.getText()+"' and Password='" + pass.getText() + "'";
@@ -77,26 +75,36 @@ public Statement cn;
         user = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("password");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 140, 60, 30);
+        jLabel1.setBounds(60, 130, 80, 30);
 
+        jLabel2.setFont(new java.awt.Font("Sailor Bold", 0, 36)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("LOGIN");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(170, 40, 60, 40);
+        jLabel2.setBounds(140, 30, 160, 40);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("username");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(60, 90, 70, 30);
         getContentPane().add(pass);
-        pass.setBounds(140, 130, 200, 40);
+        pass.setBounds(140, 130, 170, 30);
         getContentPane().add(user);
-        user.setBounds(140, 90, 200, 40);
+        user.setBounds(140, 90, 170, 30);
 
+        jButton1.setBackground(new java.awt.Color(255, 204, 51));
+        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 102));
         jButton1.setText("LOGIN");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,8 +112,11 @@ public Statement cn;
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(220, 200, 120, 70);
+        jButton1.setBounds(230, 200, 120, 60);
 
+        jButton2.setBackground(new java.awt.Color(255, 204, 51));
+        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton2.setForeground(new java.awt.Color(255, 255, 102));
         jButton2.setText("DAFTAR");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -113,9 +124,13 @@ public Statement cn;
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(60, 200, 120, 70);
+        jButton2.setBounds(60, 200, 120, 60);
 
-        setBounds(0, 0, 416, 339);
+        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\tumblr_kx3ef57wvb1qzvcfgo1_400.jpg")); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, 0, 410, 290);
+
+        setBounds(0, 0, 411, 318);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -171,6 +186,7 @@ public Statement cn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField pass;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables

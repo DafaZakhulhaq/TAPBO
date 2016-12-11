@@ -39,10 +39,13 @@ public class Daftar extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jButton1.setBackground(new java.awt.Color(51, 51, 51));
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
         jButton1.setText("Kembali");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -50,24 +53,32 @@ public class Daftar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(0, 0, 100, 40);
+        jButton1.setBounds(300, 270, 100, 30);
 
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("password");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 140, 60, 30);
+        jLabel1.setBounds(60, 140, 70, 30);
         getContentPane().add(pass);
-        pass.setBounds(140, 130, 200, 40);
+        pass.setBounds(140, 140, 170, 30);
         getContentPane().add(user);
-        user.setBounds(140, 90, 200, 40);
+        user.setBounds(140, 90, 170, 30);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("username");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(60, 90, 70, 30);
 
+        jLabel2.setFont(new java.awt.Font("Stencil Std", 1, 24)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("Daftar");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(170, 40, 60, 40);
+        jLabel2.setBounds(140, 30, 120, 40);
 
+        jButton2.setBackground(new java.awt.Color(153, 255, 153));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Daftar");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -75,7 +86,11 @@ public class Daftar extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(150, 200, 120, 70);
+        jButton2.setBounds(140, 190, 110, 50);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon("F:\\tumblr_ncpzyd5AuB1sg3qr6o1_500.jpg")); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(-30, 0, 450, 310);
 
         setBounds(0, 0, 416, 339);
     }// </editor-fold>//GEN-END:initComponents
@@ -150,6 +165,7 @@ public class Daftar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField pass;
     private javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables

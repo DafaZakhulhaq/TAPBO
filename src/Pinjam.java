@@ -138,6 +138,7 @@ public class Pinjam extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jLabel11 = new javax.swing.JLabel();
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -181,11 +182,14 @@ public class Pinjam extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Levenim MT", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("DATA PEMINJAM");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(10, 0, 270, 50);
+        jLabel1.setBounds(20, 10, 490, 50);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("NIS");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(20, 70, 160, 30);
@@ -198,6 +202,8 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(KS);
         KS.setBounds(190, 70, 200, 30);
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Nama Siswa");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 110, 160, 30);
@@ -218,6 +224,8 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(Kel);
         Kel.setBounds(190, 150, 200, 30);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Kelas");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 150, 160, 30);
@@ -230,6 +238,8 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(KB);
         KB.setBounds(190, 190, 200, 30);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Kode Buku");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(20, 190, 160, 30);
@@ -242,10 +252,14 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(Nabuk);
         Nabuk.setBounds(190, 230, 200, 30);
 
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Nama Buku");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(20, 230, 160, 30);
 
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Penerbit");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(20, 270, 160, 30);
@@ -258,6 +272,8 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(Pen);
         Pen.setBounds(190, 270, 200, 30);
 
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Tgl Pinjam");
         getContentPane().add(jLabel8);
         jLabel8.setBounds(20, 310, 160, 30);
@@ -270,6 +286,8 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(TglPin);
         TglPin.setBounds(190, 310, 200, 30);
 
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Tgl Kembali");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(20, 350, 160, 30);
@@ -282,6 +300,8 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(TglKem);
         TglKem.setBounds(190, 350, 200, 30);
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Lama Pinjam");
         getContentPane().add(jLabel10);
         jLabel10.setBounds(20, 390, 160, 30);
@@ -294,6 +314,7 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(Lampin);
         Lampin.setBounds(190, 390, 200, 30);
 
+        jTable4.setForeground(new java.awt.Color(0, 153, 153));
         jTable4.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null, null},
@@ -318,6 +339,8 @@ public class Pinjam extends javax.swing.JFrame {
         getContentPane().add(jScrollPane4);
         jScrollPane4.setBounds(10, 430, 600, 120);
 
+        jButton2.setBackground(new java.awt.Color(255, 204, 102));
+        jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Search");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -325,8 +348,10 @@ public class Pinjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(410, 70, 80, 50);
+        jButton2.setBounds(410, 70, 90, 50);
 
+        jButton4.setBackground(new java.awt.Color(0, 204, 204));
+        jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setText("Edit");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,8 +359,10 @@ public class Pinjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton4);
-        jButton4.setBounds(410, 140, 80, 50);
+        jButton4.setBounds(410, 140, 90, 50);
 
+        jButton6.setBackground(new java.awt.Color(0, 204, 0));
+        jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton6.setText("Save");
         jButton6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -343,8 +370,10 @@ public class Pinjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton6);
-        jButton6.setBounds(410, 210, 80, 50);
+        jButton6.setBounds(410, 210, 90, 50);
 
+        jButton7.setBackground(new java.awt.Color(204, 204, 255));
+        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton7.setText("Refresh");
         jButton7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -352,8 +381,10 @@ public class Pinjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton7);
-        jButton7.setBounds(520, 70, 80, 50);
+        jButton7.setBounds(520, 70, 90, 50);
 
+        jButton8.setBackground(new java.awt.Color(255, 255, 0));
+        jButton8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton8.setText("Delete");
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -361,8 +392,10 @@ public class Pinjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton8);
-        jButton8.setBounds(520, 140, 80, 50);
+        jButton8.setBounds(520, 140, 90, 50);
 
+        jButton3.setBackground(new java.awt.Color(255, 51, 51));
+        jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("Exit");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -370,7 +403,11 @@ public class Pinjam extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(520, 210, 80, 50);
+        jButton3.setBounds(520, 210, 90, 50);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon("F:\\Photography-Book-Inner-Banner-Home1.png")); // NOI18N
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(-550, -30, 1460, 600);
 
         setBounds(0, 0, 641, 599);
     }// </editor-fold>//GEN-END:initComponents
@@ -530,8 +567,6 @@ public class Pinjam extends javax.swing.JFrame {
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
 
-        
-        
         try{
             Class.forName("com.mysql.jdbc.Driver");
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost/perpustakaan", "root", "");
@@ -666,6 +701,7 @@ public class Pinjam extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
